@@ -3,8 +3,9 @@
     <head>
         <title>root</title>
         <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="root.css">
-        <script src="root.js"></script>
     </head>
     <body>
         <header>
@@ -16,9 +17,11 @@
                     <div class="content">
                         <p><span class="ptitle">Python WebScraping</span></p>
                         Please Enter URI
-                        <form action="" method="get" class="uri_input">
+                        <!-- <form action="/cgi-bin/python_cgi.py" method="get" class="uri_input">
                             <input type="url" name="URI" id="URI">
-                        </form>
+                        </form>  -->
+                        <p><input type="url" name="URI" id="URI"><button type="button" id="button">send</button></p>
+                        <textarea name="" id="result" cols="30" rows="10"></textarea>
                     </div>
                 </section>
             </div>
@@ -27,5 +30,7 @@
         <footer>
 
         </footer>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="root.js"></script>
     </body>
 </html>
