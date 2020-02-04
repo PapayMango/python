@@ -4,8 +4,7 @@ function init() {
   console.log("init");
   $("#button").click(function() {
     console.log("clicked");
-    // var text = $('#URI').text;
-    var text = "text"
+    var text = $('#URI').val();
     console.log("text : " + text)
     send(text);
   });
@@ -13,19 +12,22 @@ function init() {
 
 function send(text) {
   console.log(text);
-  console.log("a");
-  var json = JSON.stringify({'text': text});
+  console.log("b");
+  var json = JSON.stringify({'url': text});
   console.log(json)
   $.ajax({
-    type: 'POST ',
+    type: 'POST',
     url: 'cgi-bin/python_cgi.py',
     contentType: 'application/json',
     data: json,
     success: function(data) {
       console.log(data);
-      console.log(data.text);
+      console.log(data.url);
       $('#result').empty();
-      $('#result').val(data.text);
+      $('#result').val(data.url);
+    },
+    error: function(XMLHttpRequest, textStatus, errorThrown) {
+      console.log("リクエスト時にエラーが発生しました\n" + XMLHttpRequest + ":\n" + textStatus +":\n" + errorThrown);
     }
   });
   
