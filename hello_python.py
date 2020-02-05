@@ -94,13 +94,13 @@ def get_children(list,tag):
                     get_children(a,tag)
 # get_children(body_elem,"body")
 # get_children(div_elms,"div")
-get_children(html_elem,"html")
+# get_children(html_elem,"html")
 get_children(all_tags,"tags")
 # for i in dics:
 #     print(i,dics[i])
 for i in multi_dics:
     print(i,multi_dics[i])
-    
+
 
 
 
