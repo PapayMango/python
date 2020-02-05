@@ -22,9 +22,9 @@ function send(text) {
     data: json,
     success: function(data) {
       console.log(data);
-      console.log(data.url);
+      console.log(data.div);
       $('#result').empty();
-      $('#result').val(data.url);
+      $('#result').val(data.div);
     },
     error: function(XMLHttpRequest, textStatus, errorThrown) {
       console.log("リクエスト時にエラーが発生しました\n" + XMLHttpRequest + ":\n" + textStatus +":\n" + errorThrown);

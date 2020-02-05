@@ -4,7 +4,8 @@ import sys
 import json
 import logging
 import urllib.request, urllib.error
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup,element
+import re
 
 # try:
 #     logger = logging.getLogger(__name__)
@@ -24,7 +25,7 @@ res = urllib.request.urlopen(url=url)
 soup = BeautifulSoup(res, 'html.parser')
 
 # title タグの文字列を取得する
-title_text = soup.find('title').get_text()
+# title_text = soup.find('title').get_text()
 # print(title_text)
 # > Quotes to Scrape
 
@@ -35,12 +36,16 @@ links = [url.get('href') for url in soup.find_all('a')]
 
 # class が quote の div 要素を全て取得する
 # quote_elms = soup.find_all('div'}, {'class': 'quote')
-quote_elms = soup.find_all('div')
+div_elms = soup.find_all('div')
+a_elms = soup.find_all('a')
+span_elms = soup.find_all('span')
+p_elms = soup.find_all('p')
+h_elms = soup.find_all(re.compile('h?'))
 # print(len(quote_elms))
 # > 10
 
-# result = {'url': len(quote_elms)}
-result = {'url': quote_elms}
+result = {'div':len(div_elms),'a':len(a_elms),'span':len(span_elms),'p':len(p_elms),'h':len(h_elms)}
+# result = {'url': quote_elms.toString()}
 
 # print(json.JSONEncoder().encode(result))
 
