@@ -80,7 +80,7 @@ def get_children(list,tag):
             # print(i)
             if i.name == "body":
                 print(i.name)
-                # print(i)
+                print(i)
             if not i.name in multi_dics[tag].keys():
                 multi_dics[tag][i.name] = 1
             else:
