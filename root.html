@@ -34,20 +34,9 @@
 
         </footer>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="js/root.js"></script>
         <script src="js/webgl.js"></script>
-        <script id="vs" type="x-shader/x-vertex" src="">
-            attribute vec3 position;
-            uniform   mat4 mvpMatrix;
-            
-            void main(void){
-                gl_Position = mvpMatrix * vec4(position, 1.0);
-            }
-        </script>
-        <script id="fs" type="x-shader/x-fragment">
-            void main(void){
-                gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
-            }
-        </script>
+        <script src="js/root.js"></script>
+        <!-- <script id="vs" type="x-shader/x-vertex" src="js/vertex_shader.vert"></script>
+        <script id="fs" type="x-shader/x-fragment" src="js/fragment_shader.frag"></script> -->
     </body>
 </html>
