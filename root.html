@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="root.css">
+        <link rel="stylesheet" href="css/root.css">
     </head>
     <body>
         <header>
@@ -21,7 +21,10 @@
                             <input type="url" name="URI" id="URI">
                         </form>  -->
                         <p><input type="url" name="URI" id="URI"><button type="button" id="button">send</button></p>
-                        <textarea name="" id="result" cols="30" rows="10"></textarea>
+                        <!-- <textarea name="" id="result" cols="30" rows="10"></textarea> -->
+                        <canvas id="result">
+
+                        </canvas>
                     </div>
                 </section>
             </div>
@@ -31,6 +34,9 @@
 
         </footer>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="root.js"></script>
+        <script src="js/webgl.js"></script>
+        <script src="js/root.js"></script>
+        <!-- <script id="vs" type="x-shader/x-vertex" src="js/vertex_shader.vert"></script>
+        <script id="fs" type="x-shader/x-fragment" src="js/fragment_shader.frag"></script> -->
     </body>
 </html>

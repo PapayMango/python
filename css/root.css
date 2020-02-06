@@ -38,7 +38,7 @@ main{
 .content{
     position: relative;
     margin: auto;
-    max-width: 70%;
+    max-width: 90%;
     padding: 30px;
     background-color: white;
     text-align: left;
@@ -60,5 +60,13 @@ input:focus{
     outline: none;
     height: 1.5em;
     border-bottom: 1px solid blue;
+}
+canvas{
+    position: relative;
+    top: 15px;
+    width: 95%;
+    height: 550px;
+    display: block;
+    margin: auto;
 }
 
