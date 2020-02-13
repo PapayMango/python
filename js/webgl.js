@@ -1,9 +1,11 @@
-import vertexShader from 'vertexShader.vert';
-import fragmentShader from 'fragmentShader.frag';
+// import vertexShader from 'vertexShader.vert';
+// import fragmentShader from 'fragmentShader.frag';
 
 var webgl
 var v_shader    
 var f_shader
+var urls = ['js/vertex_shader.vert','js/fragment_shader.frag']
+var requests = []
 
 $(window).on('load',function(){
 
@@ -14,10 +16,50 @@ $(window).on('load',function(){
     webgl.clearColor(0.0, 0.0, 0.0, 0.01)
     webgl.clearDepth(1.0);
     webgl.clear(webgl.COLOR_BUFFER_BIT | webgl.DEPTH_BUFFER_BIT);
-    v_shader = create_shader(vertexShader,'vertex');
-    f_shader = create_shader(fragmentShader,'fragment');
-    create_program(v_shader,f_shader);
+    console.log("webgl");
+    
+    function error_callback(req,err) {
+        console.log("Error while loading '" + urls + "'.");
+        console.log(req,err);
+        reject(new Error(requests[i].statusText));
+    }
 
+    var promise = new Promise((resolve,reject) => {
+        for(var i = 0; i < urls.length ; i++){
+            requests[i] = new XMLHttpRequest();
+            console.log(i);
+            requests[i].open('GET', urls[i], true);
+            requests[i].setRequestHeader('Pragma', 'no-cache');
+            requests[i].setRequestHeader('Cache-Control', 'no-cache');
+            requests[i].setRequestHeader('If-Modified-Since', 'Thu, 01 Jun 1970 00:00:00');
+            requests[i].responseType = "text";
+            console.log(urls[i]);   
+            requests[i].onloadstart = function(){
+                console.log("load start")
+            }
+            requests[i].onload = function () {
+                if (this.readyState == 4 || this.status == 200) {
+                    console.log("Successfully '" + this.responseURL + "' loaded.");
+                    console.log(this.responseText)
+                } else { 
+                    console.log("Error while loading '" + this.status + "'.");
+                }
+                console.log("resolve");
+                resolve();
+            }
+            requests[i].onerror = error_callback;
+            requests[i].send();   
+        };
+    }).then(()=>{
+        console.log("b");
+        v_shader = create_shader(requests[0].responseText,'vertex');
+        f_shader = create_shader(requests[1].responseText,'fragment');
+        create_program(v_shader,f_shader);
+        console.log("a");
+    }).catch((reason)=>{
+        console.log("error");
+        console.log(reason);
+    })
 })
 
 
@@ -68,7 +110,7 @@ function create_vbo(data){
 //         // 頂点シェーダの場合
 //         case 'x-shader/x-vertex':
 //             console.log('vertex');
-//             shader = webgl.createShader(webgl.VERTEX_SHADER);
+//             shader    = webgl.createShader(webgl.VERTEX_SHADER);
 //             break;
             
 //         // フラグメントシェーダの場合
