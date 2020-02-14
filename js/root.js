@@ -8,7 +8,8 @@ function init() {
     console.log("text : " + text)
     send(text);
   });
-  console.log($('#result'));
+  console.log($('#result').get(0));
+  console.log(document.getElementById('result'));
   $('#result')[0].addEventListener('success',draw_result);
 }
 
@@ -42,10 +43,13 @@ function triggerEvent(element, event) {
       var evt = document.createEvent("HTMLEvents");
       evt.initEvent(event, true, true );
       console.log('chrome event thrown');
-      return element.dispatchEvent(evt);
+      console.log(document.getElementById('result'));
+      console.log(element);
+      element.get(0).dispatchEvent(evt);
+      // document.getElementById('result').dispatchEvent(evt);
   } else {
       var evt = document.createEventObject();
       console.log('IE event thrown');
-      return element.fireEvent("on"+event, evt)
+      element.fireEvent("on"+event, evt)
   }
 }

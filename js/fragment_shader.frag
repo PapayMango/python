@@ -1,6 +1,9 @@
-#version 300
+#version 300 es
+
 precision mediump float;
 
-void main(void){
-    gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
+out vec4 Color;
+
+void main(){
+    Color = vec4(0.6353, 0.7333, 0.2784, 1.0);
 }
